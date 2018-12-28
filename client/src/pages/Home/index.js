@@ -27,7 +27,10 @@ class Home extends Component {
     super()
     this.state = {
       screenNames: ["MakeSchool", "newsycombinator", "ycombinator"],
-      tweetCount: 10,
+      settings: {
+        tweetCount: 10,
+        tweetsModePro: true,
+      },
       spacing : 8
     }
   }
@@ -36,7 +39,7 @@ class Home extends Component {
     const tweetCols = [0, 1, 2].map(value => (
         <Grid key={value} item md={4}>
           <Paper>
-            <Timeline count={this.state.tweetCount} 
+            <Timeline count={this.state.settings.tweetCount} tweetsModePro={this.state.settings.tweetsModePro}
             screenName={this.state.screenNames[value]} />
           </Paper>
         </Grid>
