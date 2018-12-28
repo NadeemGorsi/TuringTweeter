@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import MainLayout from '../../layouts/MainLayout'
 import Hidden from '@material-ui/core/Hidden'
 
 const styles = theme => ({
@@ -44,25 +43,21 @@ class Home extends Component {
           </Paper>
         </Grid>
       ))
-
-    const mainContent = (
-    <Grid container spacing={16}>
-        <Grid item xs={12}>
-          <Grid container justify="center" spacing={Number(spacing)}>
-            <Hidden mdUp>
-                <TimelineTabs tabsContent={[tweetCols[0], tweetCols[1], tweetCols[2]]} screenNames={this.state.screenNames} />
-            </Hidden>
-            <Hidden smDown>
-                {tweetCols}
-            </Hidden>
-          </Grid>
-        </Grid>
-      </Grid>
-    )
     
     return (
       <div className="Home">
-        <MainLayout mainContent={mainContent} />
+        <Grid container spacing={16}>
+          <Grid item xs={12}>
+            <Grid container justify="center" spacing={Number(spacing)}>
+              <Hidden mdUp>
+                  <TimelineTabs tabsContent={[tweetCols[0], tweetCols[1], tweetCols[2]]} screenNames={this.state.screenNames} />
+              </Hidden>
+              <Hidden smDown>
+                  {tweetCols}
+              </Hidden>
+            </Grid>
+          </Grid>
+        </Grid>
       </div>
     )
   }

@@ -53,7 +53,7 @@ export default class Timeline extends Component {
         const { profileBanner } = this.state
         const { isLoading } = this.state
         const loader = <img src={placeholder2} 
-        height="100%" width="100%" />
+        height="100%" width="100%" alt="loader or placeholder"/>
 
         return(
             <Fragment>

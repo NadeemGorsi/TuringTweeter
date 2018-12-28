@@ -1,12 +1,12 @@
 import React from 'react'
 import './App.css'
-import Home from './pages/Home'
+import MainLayout from './layouts/MainLayout';
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Home />
+        <MainLayout />
       </div>
     )
   }
