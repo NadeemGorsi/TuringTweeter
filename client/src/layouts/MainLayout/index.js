@@ -21,7 +21,8 @@ import Fade from '@material-ui/core/Fade'
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom'
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
-const drawerWidth = 240
+
+const drawerWidth = 260
 
 const styles = theme => ({
   root: {
@@ -108,71 +109,69 @@ class MainLayout extends Component {
     const { open } = this.state
 
     return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}
-        >
-          <Toolbar disableGutters={!open}>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, open && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
-              Turing <strong>Tweeter</strong>
-            </Typography>
-          </Toolbar>
-        </AppBar>
-          <Drawer
-            className={classes.drawer}
-            variant="persistent"
-            anchor="left"
-            open={open}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
+      <BrowserRouter>
+        <div className={classes.root}>
+          <CssBaseline />
+          <AppBar
+            position="fixed"
+            className={classNames(classes.appBar, {
+              [classes.appBarShift]: open,
+            })}
           >
-            <div className={classes.drawerHeader}>
-              <IconButton onClick={this.handleDrawerClose}>
-                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            <Toolbar disableGutters={!open}>
+              <IconButton
+                color="inherit"
+                aria-label="Open drawer"
+                onClick={this.handleDrawerOpen}
+                className={classNames(classes.menuButton, open && classes.hide)}
+              >
+                <MenuIcon />
               </IconButton>
-            </div>
-            <Divider />
-            <BrowserRouter>
-              <MenuList>
-                <MenuItem component={NavLink} to="/">
-                  Home
-                </MenuItem>
-                <MenuItem component={NavLink} to="/about">
-                  About
-                </MenuItem>
-              </MenuList>
-            </BrowserRouter>
-          </Drawer>
-        <main
-          className={classNames(classes.content, {
-            [classes.contentShift]: open,
-          })}
-        >
-          <div className={classes.drawerHeader} />
-          <BrowserRouter>
-            <Fade>
-                <Switch>
-                  <Route exact path="/" component={Home}/>
-                  <Route path="/about" component={About}/>
-                  <Route component={NoPage}/>
-                </Switch>
-            </Fade>
-          </BrowserRouter>
-        </main>
-      </div>
+              <Typography variant="h6" color="inherit" noWrap>
+                Turing <strong>Tweeter</strong>
+              </Typography>
+            </Toolbar>
+          </AppBar>
+            <Drawer
+              className={classes.drawer}
+              variant="persistent"
+              anchor="left"
+              open={open}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+            >
+              <div className={classes.drawerHeader}>
+                <IconButton onClick={this.handleDrawerClose}>
+                  {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                </IconButton>
+              </div>
+              <Divider />
+                <MenuList>
+                  <MenuItem component={NavLink} to="/">
+                    Home
+                  </MenuItem>
+                  <MenuItem component={NavLink} to="/about">
+                    About
+                  </MenuItem>
+                </MenuList>
+            </Drawer>
+          <main
+            className={classNames(classes.content, {
+              [classes.contentShift]: open,
+            })}
+          >
+            <div className={classes.drawerHeader} />
+              <Fade>
+                  <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/about" component={About}/>
+                    <Route component={NoPage}/>
+                  </Switch>
+              </Fade>
+          </main>
+        </div>
+      </BrowserRouter>
     )
   }
 }

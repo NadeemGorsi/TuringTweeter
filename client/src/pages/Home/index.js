@@ -33,6 +33,7 @@ class Home extends Component {
       spacing : 8
     }
   }
+
   render() {
     const { spacing } = this.state
     const tweetCols = [0, 1, 2].map(value => (
